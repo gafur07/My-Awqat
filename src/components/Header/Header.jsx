@@ -7,14 +7,15 @@ const Header = () => {
   return (
     <>
       <div className='w-full px-[10%] py-[20px] shadow-md bg-white z-50 sticky top-0 flex items-center justify-between'>
-          <h1 className='logo text-slate-600 text-xl font-bold uppercase'>
-          My <span className='text-red-800'>Awqat</span>
-          </h1>
-
+          <Link to={"/"}>
+            <h1 className='logo text-[#130f40] text-xl font-bold cursor-pointer flex items-center gap-2'>Food
+              <span className='text-[#ff7800] text-[24px]'><i className='bx bxs-basket'></i></span> 
+            </h1>
+          </Link> 
           <ul className='flex gap-6'>
             {headerMenus.map((menu) => (
               <li key={menu.id}>
-              <Link  className="font-semibold text-slate-600 text-xl uppercase transition duration-200 hover:text-red-800" to={menu.path}>
+              <Link  className="text-[#130f40] text-[18px] transition duration-200 hover:text-[#ff7800]" to={menu.path}>
                 {menu.label}
               </Link>
 

@@ -6,7 +6,7 @@ const initialState = {
 }
 
 export const mealSlice = createSlice({
-    name: "meal",
+    name: "meals",
     initialState,
     reducers: {
         fetchingMeals: state => {
