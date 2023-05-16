@@ -44,9 +44,9 @@ const MealDetails = () => {
 
   return (
     <>
-      <div className="w-[80%] mx-auto">
+      <div className="w-[80%] mx-auto meal_yt">
         <Spin spinning={loading}>
-          <div className="flex justify-between items-center p-[1rem] my-[2rem] mx-0 border-2 border-[rgba(0,0,0,.1)] rounded-md shadow-md flex-wrap">
+          <div className="flex justify-between items-center  gap-4 p-[1rem] my-[2rem] mx-0 border-2 border-[rgba(0,0,0,.1)] rounded-md shadow-md flex-wrap">
             <h1 className="text-xl font-semibold">{strMeal}</h1>
             <div className="meal-details">
               <Link to={`/category/${strCategory}`} className="details-link">
@@ -61,7 +61,7 @@ const MealDetails = () => {
               </b>
             </div>
           </div>
-          <div className="p-[1rem] border-2 border-[rgba(0,0,0,.1)] shadow-md w-full rounded-md">
+          <div className="youtube p-[1rem] border-2 border-[rgba(0,0,0,.1)] shadow-md w-full rounded-md">
             <iframe
               className="w-full"
               width="900"
@@ -76,7 +76,7 @@ const MealDetails = () => {
             ></iframe>
           </div>
 
-          <div className="flex gap-6 w-full text-gray-600 p-[1rem] my-[2rem] mx-0 border-2 border-[rgba(0,0,0,.1)] rounded-md shadow-md">
+          <div className="description flex items-start gap-6 w-full text-gray-600 p-[1rem] my-[2rem] mx-0 border-2 border-[rgba(0,0,0,.1)] rounded-md shadow-md">
             <img
               className="w-[20rem] rounded-md"
               src={strMealThumb}

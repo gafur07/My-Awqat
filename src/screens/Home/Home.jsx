@@ -47,20 +47,22 @@ const Home = () => {
           Shop Now
         </button>
       </Heading>
-      <div className="container mx-auto py-12">
         <Spin spinning={loadingCategories}>
-          <div className="row">
+          <div className="bg-[#e6e7e5]">
+          <div className="row py-12">
             {categories?.map((item) => (
-              <Link to={`category/${item.strCategory}`} key={item.idCategory}>
-                <div className="item cursor-pointer transition duration-300 hover:border-slate-600 border-2">
+              <div className="item cursor-pointer">
+                <Link to={`category/${item.strCategory}`} key={item.idCategory}>
                   <img src={item.strCategoryThumb} />
-                  <h1>{item.strCategory}</h1>
+                </Link>
+                <div className="item__body" key={item.idCategory}>
+                  <h1 className="w-full">{item.strCategory}</h1>
                 </div>
-              </Link>
+              </div>
             ))}
           </div>
+          </div>
         </Spin>
-      </div>
     </>
   );
 };

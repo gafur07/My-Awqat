@@ -10,9 +10,11 @@ import {
   fetchingArea,
   fetchingAreaError,
 } from "../../store/reducers/areaSlice";
+import { addToCart } from "../../store/reducers/cartSlice";
 
 const Area = () => {
   const { area, loadingArea } = useSelector((store) => store.area);
+  const { basket } = useSelector(store => store.cart)
   const dispatch = useDispatch();
   const params = useParams();
 
@@ -28,6 +30,10 @@ const Area = () => {
       });
   }, [params]);
 
+  function addCart(meal) {
+    dispatch(addToCart(meal))
+  }
+  console.log(basket)
   return (
     <>
       <Heading>
@@ -38,15 +44,15 @@ const Area = () => {
       <Spin spinning={loadingArea}>
         <div className="row py-12">
           {area.map((item) => (
-            <Link to={`/meal/${item.idMeal}`} key={item.idMeal}>
-              <div
-                className="item cursor-pointer transition duration-300 hover:border-slate-600 border-2"
-                key={item.idMeal}
-              >
+            <div className="item cursor-pointer" key={item.idMeal}>
+              <Link to={`/meal/${item.idMeal}`} key={item.idMeal}>
                 <img src={item.strMealThumb} />
-                <h1 className="w-full truncate">{item.strMeal}</h1>
+              </Link>
+              <div className="item__body">
+                <h2 className="w-full">{item.strMeal}</h2>
+                <button onClick={() => addCart(item)}>Favourite</button>
               </div>
-            </Link>
+            </div>
           ))}
         </div>
       </Spin>

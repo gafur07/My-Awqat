@@ -5,15 +5,19 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useParams } from "react-router-dom";
 import Heading from "../../components/Heading/Heading";
+import { addToCart } from "../../store/reducers/cartSlice";
 import {
   fetchedMeals,
   fetchingErrorMeals,
   fetchingMeals,
 } from "../../store/reducers/mealSlice";
 
+
+
 const Meals = () => {
   const params = useParams();
   const { meals, loadingMeals } = useSelector((store) => store.meals);
+  const { basket } = useSelector(store => store.cart)
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -30,6 +34,11 @@ const Meals = () => {
       });
   }, [params]);
 
+  function addCart(meal) {
+    dispatch(addToCart(meal))
+  }
+  console.log(basket);
+
   return (
     <>
       <Heading>
@@ -40,15 +49,18 @@ const Meals = () => {
       <Spin spinning={loadingMeals}>
         <div className="row py-12">
           {meals?.map((item) => (
-            <Link to={`/meal/${item.idMeal}`} key={item.idMeal}>
-              <div
-                className="item cursor-pointer transition duration-300 hover:border-slate-600 border-2"
+            <div
+                className="item cursor-pointer transition duration-300"
                 key={item.idMeal}
               >
+              <Link to={`/meal/${item.idMeal}`} key={item.idMeal}>
                 <img src={item.strMealThumb} />
-                <h1 className="w-full truncate">{item.strMeal}</h1>
+              </Link>
+              <div className="item__body">
+                <h2 className="w-full">{item.strMeal}</h2>
+                <button onClick={() => addCart(item)}>Favourite</button>
               </div>
-            </Link>
+              </div>
           ))}
         </div>
       </Spin>

@@ -21,7 +21,8 @@
     "redux-toolkit": "^1.1.2",
     "sacc": "^0.0.1",
     "sass": "^1.62.1",
-    "scss": "^0.2.4"
+    "scss": "^0.2.4",
+    "sweetalert2": "^11.7.5"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
