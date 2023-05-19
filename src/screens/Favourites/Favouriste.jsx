@@ -30,7 +30,7 @@ const Favouriste = () => {
         <div className='row py-12'>
           {basket.map(item => (
             <div className="item">
-              <Link to={`/meals/${item.idMeal}`}>
+              <Link to={`/meal/${item.idMeal}`}>
                 <img src={item.strMealThumb} />
               </Link>
               <div className="item__body">
